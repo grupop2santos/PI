@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Editar "{{ vaga['titulo'] }}" {% endblock %}</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input type="text" name="titulo" placeholder="Título da Vaga"
+               class="form-control"
+               value="{{ request.form['titulo'] or vaga['titulo'] }}">
+    </div>
+
+    <div class="mb-3">
+        <label for="descricao" class="form-label">Descrição</label>
+        <textarea name="descricao" placeholder="Descrição da Vaga"
+                  class="form-control">{{ request.form['descricao'] or vaga['descricao'] }}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <button class="btn btn-primary" type="Enviar">Enviar</button>
+    </div>
+
+</form>
+<hr>
+<form action="{{ url_for('apagar_vaga', id=vaga['id']) }}" method="post">
+    <input type="submit" value="Apagar"
+           class="btn btn-danger"
+           onclick="return confirm('Tem certeza que deseja apagar essa postagem?')">
+</form>
+{% endblock %}

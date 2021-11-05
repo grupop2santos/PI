@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} {{ vaga['titulo'] }} {% endblock %}</h2>
+    <span class="badge bg-dark">{{ vaga['criada'] }}</span>
+    <p a>{{ vaga['descricao'] }}</p>
+{% endblock %}

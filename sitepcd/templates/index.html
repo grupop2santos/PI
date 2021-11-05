@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Bem-vindo ao serviço de vagas para deficientes visuais! {% endblock %}</h1>
+    {% for vaga in vagas %}
+        <a href="{{ url_for('vaga', vaga_id=vaga['id']) }}">
+            <h2>{{ vaga['titulo'] }}</h2>
+        </a>
+        <span class="badge bg-secondary">{{ vaga['criada'] }}</span>
+        <a href="{{ url_for('editar_vaga', id=vaga['id']) }}">
+            <span class="badge bg-dark">Editar</span>
+        </a>
+        <hr>
+    {% endfor %}
+{% endblock %}
